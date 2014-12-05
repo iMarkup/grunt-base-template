@@ -172,7 +172,7 @@ module.exports = function(grunt) {
         },
         options: {
           server: {
-            baseDir: "./",
+            baseDir: "../",
             index: "index.html",
             directory: true
           },
