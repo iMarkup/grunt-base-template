@@ -1,12 +1,13 @@
 module.exports = {
     sassDir:          'scss/',
-    sassMainFileName: 'all',
+    sassMainFileName: 'app',
     cssDir:           'css/',
     cssMainFileDir:   'css/',
-    cssMainFileName:  'all',
+    cssMainFileName:  'app',
     jsDir:            'js/',
     imgDir:           'images/',
     imgSourceDir:     'sourceimages/',
+    //hasBower: {includePaths: ['bower_components/foundation/scss']},
 
     // sftp server
     sftpServer:       'example.com',

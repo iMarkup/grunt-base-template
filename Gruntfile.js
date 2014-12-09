@@ -8,7 +8,7 @@ var PathConfig = require('./grunt-settings.js');
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 
-    config: PathConfig, 
+    config: PathConfig,
 
     //clean files
     clean: {
@@ -21,7 +21,7 @@ var PathConfig = require('./grunt-settings.js');
     // autoprefixer
     autoprefixer: {
       options: {
-        browsers: ['> 1%', 'last 4 version', 'Android 4', 'ie 8', 'ie 9']
+        browsers: ['last 4 version', 'Android 4', 'ie 8', 'ie 9']
       },
 
       multiple_files: {
@@ -30,7 +30,7 @@ var PathConfig = require('./grunt-settings.js');
         },
         expand: true,
         flatten: true,
-        src: ['<%= config.cssDir %>*.css', '<%= config.cssMainFileDir %><%= config.cssMainFileName %>.css'],
+        src: ['<%= config.cssDir %>*.css', '<%= config.cssMainFileDir %><%= config.cssMainFileName %>.css']
       },
 
       dist: {
@@ -39,13 +39,14 @@ var PathConfig = require('./grunt-settings.js');
               '!<%= config.cssDir %>bootstrap.css',
               '!<%= config.cssDir %>bootstrap.min.css',
               '!<%= config.cssDir %>ie.css',
-              '!<%= config.cssDir %>ie8.css',
-              ],
+              '!<%= config.cssDir %>ie8.css'
+              ]
       },
     },
 
     //sass
     sass: {
+      options: PathConfig.hasBower,
       dev: {
         options: {
           sourceMap: true,
@@ -75,7 +76,7 @@ var PathConfig = require('./grunt-settings.js');
             dest: '<%= config.cssDir %>',
             ext: '.css'
           },
-          {src: '<%= config.sassDir %><%= config.sassMainFileName %>.scss', dest: '<%= config.cssMainFileDir %><%= config.cssMainFileName %>.css'},
+          {src: '<%= config.sassDir %><%= config.sassMainFileName %>.scss', dest: '<%= config.cssMainFileDir %><%= config.cssMainFileName %>.css'}
         ]
       },
       min: {
@@ -91,7 +92,7 @@ var PathConfig = require('./grunt-settings.js');
             dest: '<%= config.cssDir %>',
             ext: '.min.css'
           },
-          {src: '<%= config.sassDir %><%= config.sassMainFileName %>.scss', dest: '<%= config.cssMainFileDir %><%= config.cssMainFileName %>.min.css'},
+          {src: '<%= config.sassDir %><%= config.sassMainFileName %>.scss', dest: '<%= config.cssMainFileDir %><%= config.cssMainFileName %>.min.css'}
         ]
       }
     },
