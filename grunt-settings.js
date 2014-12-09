@@ -1,4 +1,4 @@
-  var PathConfig = {
+{
     sassDir:          'scss/',
     sassMainFileName: 'all',
     cssDir:           'css/',
@@ -14,4 +14,4 @@
     sftpLogin:        'login',
     sftpPas:          'password',
     sftpDestination:  '/pathTo/css'
-  };
+}

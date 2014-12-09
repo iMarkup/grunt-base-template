@@ -2,7 +2,7 @@ module.exports = function(grunt) {
 
   require('load-grunt-tasks')(grunt);
 
-var PathConfig = require('grunt-settings.js');
+var PathConfig = require('./grunt-settings.js');
 
   // tasks
   grunt.initConfig({
