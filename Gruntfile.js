@@ -104,7 +104,7 @@ var PathConfig = require('./grunt-settings.js');
       },
       images: {
         files: ['<%= config.imgSourceDir %>**/*.*'],
-        tasks: ['newer:imagemin', 'newer:pngmin:all'],
+        tasks: ['newer:svgmin', 'img:jpg', 'newer:pngmin:all'],
         options: {
             spawn: false
         }
@@ -118,20 +118,34 @@ var PathConfig = require('./grunt-settings.js');
       }
     },
 
-    imagemin: {
-      options: {
-        optimizationLevel: 3,
-        svgoPlugins: [{ removeViewBox: false }]
-      },
-      jpg: {
-        files: [{
-          expand: true,
-          cwd: '<%= config.imgSourceDir %>',
-          src: ['**/*.{svg,jpg}'],
-          dest: '<%= config.imgDir %>'
-        }]
-      }
-    },
+   img: {
+     jpg: {
+         src: ['<%= config.imgSourceDir %>**/*.jpg'],
+         dest: '<%= config.imgDir %>'
+     },
+   },
+
+   svgmin: {
+     options: {
+       plugins: [
+         {
+             removeViewBox: false
+         }, {
+             removeUselessStrokeAndFill: false
+         }
+       ]
+     },
+     dist: {
+       files: [
+          {
+            expand: true,
+            src: ['**/*.svg'],
+            cwd: '<%= config.imgSourceDir %>',
+            dest: '<%= config.imgDir %>'
+          }
+        ]
+     }
+   },
 
     // lossy image optimizing (compress png images with pngquant)
     pngmin: {
@@ -278,10 +292,10 @@ var PathConfig = require('./grunt-settings.js');
   //css beautiful
   grunt.registerTask('cssbeauty', ['sass:dist', 'cmq:dist', 'autoprefixer:dist', 'csscomb:dist']);
   //img minify
-  grunt.registerTask('imgmin', ['imagemin', 'pngmin:all']);
+  grunt.registerTask('imgmin', ['img:jpg', 'svgmin', 'pngmin:all']);
 
   //final build
-  grunt.registerTask('dist', ['clean:css', 'cssbeauty', 'newer:imagemin', 'newer:pngmin:all']);
+  grunt.registerTask('dist', ['clean:css', 'cssbeauty']);
 
 };
 
