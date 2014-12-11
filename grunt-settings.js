@@ -1,9 +1,9 @@
 module.exports = {
     sassDir:          'scss/',
-    sassMainFileName: 'app',
+    sassMainFileName: 'all',
     cssDir:           'css/',
     cssMainFileDir:   'css/',
-    cssMainFileName:  'app',
+    cssMainFileName:  'all',
     jsDir:            'js/',
     imgDir:           'images/',
     imgSourceDir:     'sourceimages/',
