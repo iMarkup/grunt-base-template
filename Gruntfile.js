@@ -110,6 +110,13 @@ var PathConfig = require('./grunt-settings.js');
             spawn: false
         }
       },
+      svgSprites: {
+        files: ['<%= config.imgSourceDir %>svg-icons/*.*'],
+        tasks: ['svgstore', 'svg2string'],
+        options: {
+            spawn: false
+        }
+      },
       css: {
         files: ['<%= config.sassDir %>**/*.scss'],
         tasks: ['sass:dev'/*, 'newer:autoprefixer:dist'*/],
@@ -119,15 +126,15 @@ var PathConfig = require('./grunt-settings.js');
       }
     },
 
-   img: {
-     jpg: {
+    img: {
+      jpg: {
          src: ['<%= config.imgSourceDir %>**/*.jpg'],
          dest: '<%= config.imgDir %>'
-     },
-   },
+      },
+    },
 
-   svgmin: {
-     options: {
+    svgmin: {
+      options: {
        plugins: [
          {
              removeViewBox: false
@@ -135,8 +142,8 @@ var PathConfig = require('./grunt-settings.js');
              removeUselessStrokeAndFill: false
          }
        ]
-     },
-     dist: {
+      },
+      dist: {
        files: [
           {
             expand: true,
@@ -145,8 +152,39 @@ var PathConfig = require('./grunt-settings.js');
             dest: '<%= config.imgDir %>'
           }
         ]
-     }
-   },
+      }
+    },
+
+    svgstore: {
+      options: {
+        prefix : 'icon-', // This will prefix each ID
+        svg: { // will add and overide the the default xmlns="http://www.w3.org/2000/svg" attribute to the resulting SVG
+          viewBox : '0 0 100 100',
+          xmlns: 'http://www.w3.org/2000/svg'
+        },
+        cleanup: ['fill']
+      },
+      your_target: {
+        files: {
+          '<%= config.imgDir %>svg-sprites/sprite.svg': ['<%= config.imgDir %>svg-icons/*.svg'],
+        },
+      },
+    },
+
+    svg2string: {
+      elements: {
+        options: {
+          template: '(window.SVG_SPRITES = window.SVG_SPRITES || {})["[%= filename %]"] = [%= content %];',
+          wrapLines: false
+        },
+        files: {
+          '<%= config.jsDir %>svg-sprites.js': [
+            // '<%= config.imgDir %>sprite.svg',
+            '<%= config.imgDir %>svg-sprites/sprite.svg'
+          ]
+        }
+      }
+    },
 
     // lossy image optimizing (compress png images with pngquant)
     pngmin: {
@@ -284,6 +322,10 @@ var PathConfig = require('./grunt-settings.js');
 
   //watch + browser sync
   grunt.registerTask('dev', ['browserSync', 'watch']);
+
+  //create svg sprite
+  grunt.registerTask('svgsprite', ['svgmin', 'svgstore', 'svg2string']);
+  
   grunt.registerTask('default', ['dev']);
 
   // upload to server
