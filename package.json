@@ -1,6 +1,6 @@
 {
   "name": "grunt-with-node-sass",
-  "version": "0.9.4",
+  "version": "0.9.5",
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-autoprefixer": "2.0.0",
@@ -14,7 +14,7 @@
     "grunt-img": "^0.1.8",
     "grunt-newer": "0.8.0",
     "grunt-notify": "0.4.1",
-    "grunt-pngmin": "0.6.1",
+    "grunt-pngmin": "0.6.4",
     "grunt-sass": "0.16.1",
     "grunt-sftp-deploy": "0.2.2",
     "grunt-svgmin": "^2.0.0",
