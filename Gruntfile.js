@@ -13,8 +13,8 @@ var PathConfig = require('./grunt-settings.js');
     //clean files
     clean: {
       options: { force: true },
-      css: {
-        src: ["<%= config.cssDir %>**/*.map", "<%= config.cssMainFileDir %><%= config.cssMainFileName %>.css.map"]
+      temp: {
+        src: ["<%= config.cssDir %>**/*.map", "<%= config.cssMainFileDir %><%= config.cssMainFileName %>.css.map", "./jpgtmp.jpg"]
       }
     },
 
@@ -338,7 +338,7 @@ var PathConfig = require('./grunt-settings.js');
   grunt.registerTask('imgmin', ['img:jpg', 'svgmin', 'pngmin:all']);
 
   //final build
-  grunt.registerTask('dist', ['clean:css', 'cssbeauty']);
+  grunt.registerTask('dist', ['clean:temp', 'cssbeauty']);
 
 };
 
