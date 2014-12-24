@@ -81,6 +81,17 @@ textarea {
 	}
 }
 
+input[type=text],
+input[type=password],
+input[type=file],
+input[type=submit],
+input[type=search],
+input[type=email],
+textarea{
+	-webkit-appearance:none;
+	-webkit-border-radius:0;
+}
+
 textarea {
 	overflow: auto;
 	resize: vertical;
