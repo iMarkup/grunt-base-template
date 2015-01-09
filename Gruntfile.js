@@ -105,7 +105,7 @@ var PathConfig = require('./grunt-settings.js');
       },
       images: {
         files: ['<%= config.imgSourceDir %>**/*.*'],
-        tasks: ['newer:svgmin', 'img:jpg', 'newer:pngmin:all'],
+        tasks: ['img:jpg', 'newer:pngmin:all', 'newer:svgmin'],
         options: {
             spawn: false
         }
