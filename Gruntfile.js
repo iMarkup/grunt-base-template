@@ -280,9 +280,14 @@ var PathConfig = require('./grunt-settings.js');
         log: false
       },
       all: {
-        files: {
-          '<%= config.cssDir %>*.css' : '<%= config.cssDir %>*.css'
-        },
+        files: [
+          {
+            expand: true,
+            src: ['**/*.css', '!bootstrap.css'],
+            cwd: '<%= config.cssDir %>',
+            dest: '<%= config.cssDir %>'
+          }
+        ]
       },
       dist: {
         files: {
