@@ -57,27 +57,13 @@ input::-moz-focus-inner {
 }
 
 button,
-html input[type="button"],
+input[type="button"],
 input[type="reset"],
-input[type="submit"] {
-	-webkit-appearance: button;
-	cursor: pointer; 
-}
-
-input[type="submit"]:hover,
-button:hover {
-	cursor: pointer;
-}
-
-input[type="text"],
-input[type="password"],
 input[type="file"],
-input[type="submit"],
-input[type="search"],
-input[type="email"],
-textarea{
+input[type="submit"]{
 	-webkit-appearance:none;
 	-webkit-border-radius:0;
+	cursor: pointer;
 }
 
 input[type="text"],
@@ -89,6 +75,8 @@ input[type="search"],
 textarea {
 	margin: 0;
 	padding: 4px 7px;
+	-webkit-appearance:none;
+	-webkit-border-radius:0;
 	border: 1px solid $base-input-border-color;
 	&:focus {
 		border-color: darken($base-input-border-color, 30%); 
