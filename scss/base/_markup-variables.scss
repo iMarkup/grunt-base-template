@@ -1,13 +1,22 @@
-$base-text-color: #000;
-$base-background-color: #fff;
-$base-link-color: #666;
-$base-form-text-color: #000;
-$base-form-placeholder-color: #999;
-$base-input-border-color: #999;
+// brand colors (http://name-of-color.com/)
+$black: #000;
+$white: #fff;
+$mountain-mist: #999;
+$ironside-gray: #666;
+
+
+// base variables
+$base-text-color: $black;
+$base-background-color: $white;
+$base-link-color: $ironside-gray;
+$base-form-text-color: $black;
+$base-form-placeholder-color: $mountain-mist;
+$base-input-border-color: $mountain-mist;
 
 $base-font-size: 12px;
-$base-line-height: 1.2;
-$base-font-family: Arial, Helvetica, sans-serif;
+$base-line-height: 1.25;
+$base-font-family: 'Arial', 'Helvetica', sans-serif;
+$base-text-interval: ($base-font-size * $base-line-height);
 
 $base-min-width: 320px;
 
