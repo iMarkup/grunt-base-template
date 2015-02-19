@@ -15,7 +15,7 @@
     "grunt-newer": "1.1.0",
     "grunt-notify": "0.4.1",
     "grunt-pngmin": "0.6.4",
-    "grunt-sass": "0.17.0",
+    "grunt-sass": "0.18.0",
     "grunt-sftp-deploy": "0.2.2",
     "grunt-svgmin": "^2.0.0",
     "grunt-svg2string": "0.1.6",
