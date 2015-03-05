@@ -50,7 +50,7 @@ var PathConfig = require('./grunt-settings.js');
       dev: {
         options: {
           sourceMap: true,
-          style: 'expanded'
+          style: 'nested'
         },
         files: [
           {
@@ -66,7 +66,7 @@ var PathConfig = require('./grunt-settings.js');
       dist: {
         options: {
           sourceMap: false,
-          style: 'expanded'
+          style: 'nested'
         },
         files: [
           {
@@ -82,7 +82,7 @@ var PathConfig = require('./grunt-settings.js');
       min: {
         options: {
           sourceMap: false,
-          style: 'compressed'
+          outputStyle: 'compressed'
         },
         files: [
           {
