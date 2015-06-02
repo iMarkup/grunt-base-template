@@ -212,7 +212,7 @@ var PathConfig = require('./grunt-settings.js');
         },
         options: {
           server: {
-            baseDir: "./",
+            baseDir: "../",
             index: "index.html",
             directory: true
           },
