@@ -119,7 +119,7 @@ var PathConfig = require('./grunt-settings.js');
       },
       css: {
         files: ['<%= config.sassDir %>**/*.scss'],
-        tasks: ['sass:dev', 'newer:autoprefixer:dist'],
+        tasks: ['sass:dev'/*, 'newer:autoprefixer:dist'*/],
         options: {
             spawn: false,
         }
