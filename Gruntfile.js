@@ -132,7 +132,7 @@ var PathConfig = require('./grunt-settings.js');
         cwd: '<%= config.imgSourceDir %>',
         src: '**',
         dest: '<%= config.imgDir %>',
-        flatten: true,
+        //flatten: true,
         filter: 'isFile',
       }
     },
