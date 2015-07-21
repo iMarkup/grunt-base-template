@@ -14,7 +14,7 @@ var PathConfig = require('./grunt-settings.js');
     clean: {
       options: { force: true },
       temp: {
-        src: ["<%= config.cssDir %>**/*.map", "<%= config.cssMainFileDir %><%= config.cssMainFileName %>.css.map", "./jpgtmp.jpg"]
+        src: ["<%= config.cssDir %>**/*.map", "<%= config.imgDir %>", "<%= config.cssMainFileDir %><%= config.cssMainFileName %>.css.map", "./jpgtmp.jpg"]
       }
     },
 
@@ -105,7 +105,7 @@ var PathConfig = require('./grunt-settings.js');
       },
       images: {
         files: ['<%= config.imgSourceDir %>**/*.*'],
-        tasks: ['img:jpg', 'newer:pngmin:all', 'newer:svgmin'],
+        tasks: [/*'img:jpg', 'newer:pngmin:all', 'newer:svgmin'*/ 'newer:copy:images'],
         options: {
             spawn: false
         }
@@ -119,10 +119,21 @@ var PathConfig = require('./grunt-settings.js');
       },
       css: {
         files: ['<%= config.sassDir %>**/*.scss'],
-        tasks: ['sass:dev'/*, 'newer:autoprefixer:dist'*/],
+        tasks: ['sass:dev', 'newer:autoprefixer:dist'],
         options: {
             spawn: false,
         }
+      }
+    },
+
+    copy: {
+      images: {
+        expand: true,
+        cwd: '<%= config.imgSourceDir %>',
+        src: '**',
+        dest: '<%= config.imgDir %>',
+        flatten: true,
+        filter: 'isFile',
       }
     },
 
@@ -236,25 +247,25 @@ var PathConfig = require('./grunt-settings.js');
     }, 
 
     //copy files
-    copy: {
-      dist: {
-        files: [
-          {
-            expand: true,
-            dot: true,
-            cwd: './',
-            src: [
-              '**',
+    // copy: {
+    //   dist: {
+    //     files: [
+    //       {
+    //         expand: true,
+    //         dot: true,
+    //         cwd: './',
+    //         src: [
+    //           '**',
 
-              '!scss/**',
-              '!**/**/.svn/**',
-              '!css/**',
-            ],
-            dest: '<%= config.distDir %>'
-          } 
-        ]
-      },
-    },
+    //           '!scss/**',
+    //           '!**/**/.svn/**',
+    //           '!css/**',
+    //         ],
+    //         dest: '<%= config.distDir %>'
+    //       } 
+    //     ]
+    //   },
+    // },
 
     csscomb: {
       all: {
@@ -340,10 +351,10 @@ var PathConfig = require('./grunt-settings.js');
   //css beautiful
   grunt.registerTask('cssbeauty', ['sass:dist', 'cmq:dist', 'autoprefixer:dist', 'csscomb:dist']);
   //img minify
-  grunt.registerTask('imgmin', ['img:jpg', 'svgmin', 'pngmin:all']);
+  grunt.registerTask('imgmin', ['img:jpg', 'pngmin:all', 'svgmin']);
 
   //final build
-  grunt.registerTask('dist', ['clean:temp', 'cssbeauty']);
+  grunt.registerTask('dist', ['clean:temp', 'imgmin', 'cssbeauty']);
 
 };
 
