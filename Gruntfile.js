@@ -137,11 +137,15 @@ var PathConfig = require('./grunt-settings.js');
       }
     },
 
-    img: {
-      jpg: {
-         src: ['<%= config.imgSourceDir %>**/*.jpg'],
-         dest: '<%= config.imgDir %>'
-      },
+    imagemin: {                          
+      dynamic: {                         
+        files: [{
+          expand: true,                  
+          cwd: '<%= config.imgSourceDir %>',                   
+          src: ['**/*.{jpg,gif}'],   
+          dest: '<%= config.imgDir %>'                  
+        }]
+      }
     },
 
     svgmin: {
@@ -351,7 +355,7 @@ var PathConfig = require('./grunt-settings.js');
   //css beautiful
   grunt.registerTask('cssbeauty', ['sass:dist', 'cmq:dist', 'autoprefixer:dist', 'csscomb:dist']);
   //img minify
-  grunt.registerTask('imgmin', ['img:jpg', 'pngmin:all', 'svgmin']);
+  grunt.registerTask('imgmin', ['imagemin', 'pngmin:all', 'svgmin']);
 
   //final build
   grunt.registerTask('dist', ['clean:temp', 'imgmin', 'cssbeauty']);
