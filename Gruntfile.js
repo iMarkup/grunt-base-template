@@ -19,20 +19,38 @@ var PathConfig = require('./grunt-settings.js');
     },
 
     // autoprefixer
-    autoprefixer: {
+    // autoprefixer: {
+    //   options: {
+    //     browsers: ['last 4 version', 'Android 4', 'ie 8', 'ie 9']
+    //   },
+
+    //   multiple_files: {
+    //     options: {
+    //         map: true
+    //     },
+    //     expand: true,
+    //     flatten: true,
+    //     src: ['<%= config.cssDir %>*.css', '<%= config.cssMainFileDir %><%= config.cssMainFileName %>.css']
+    //   },
+
+    //   dist: {
+    //     src: ['<%= config.cssDir %>*.css', 
+    //           '<%= config.cssMainFileDir %><%= config.cssMainFileName %>.css',
+    //           '!<%= config.cssDir %>bootstrap.css',
+    //           '!<%= config.cssDir %>bootstrap.min.css',
+    //           '!<%= config.cssDir %>ie.css',
+    //           '!<%= config.cssDir %>ie8.css'
+    //           ]
+    //   },
+    // },
+
+    postcss: {
       options: {
-        browsers: ['last 4 version', 'Android 4', 'ie 8', 'ie 9']
+        map: false,
+        processors: [
+          require('autoprefixer-core')({browsers: ['last 4 version', 'Android 4']})
+        ]
       },
-
-      multiple_files: {
-        options: {
-            map: true
-        },
-        expand: true,
-        flatten: true,
-        src: ['<%= config.cssDir %>*.css', '<%= config.cssMainFileDir %><%= config.cssMainFileName %>.css']
-      },
-
       dist: {
         src: ['<%= config.cssDir %>*.css', 
               '<%= config.cssMainFileDir %><%= config.cssMainFileName %>.css',
@@ -41,7 +59,7 @@ var PathConfig = require('./grunt-settings.js');
               '!<%= config.cssDir %>ie.css',
               '!<%= config.cssDir %>ie8.css'
               ]
-      },
+      }
     },
 
     //sass
@@ -119,7 +137,7 @@ var PathConfig = require('./grunt-settings.js');
       },
       css: {
         files: ['<%= config.sassDir %>**/*.scss'],
-        tasks: ['sass:dev'/*, 'newer:autoprefixer:dist'*/],
+        tasks: ['sass:dev', 'postcss:dist'],
         options: {
             spawn: false,
         }
@@ -353,7 +371,7 @@ var PathConfig = require('./grunt-settings.js');
 
 //finally 
   //css beautiful
-  grunt.registerTask('cssbeauty', ['sass:dist', 'cmq:dist', 'autoprefixer:dist', 'csscomb:dist']);
+  grunt.registerTask('cssbeauty', ['sass:dist', 'cmq:dist', 'postcss:dist', 'csscomb:dist']);
   //img minify
   grunt.registerTask('imgmin', ['imagemin', 'pngmin:all', 'svgmin']);
 
