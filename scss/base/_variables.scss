@@ -4,16 +4,15 @@
 
 $gray: #999;
 $black: #333;
-$white: fff;
+$white: #fff;
 $light-blue: #39f;
 
-$base-link-color: $light-blue;
 $base-font-sans-serif: 'Arial', 'Helvetica Neue', 'Helvetica', sans-serif;
 $base-font-serif: 'Times New Roman', 'Times', 'Baskerville', 'Georgia', serif;
 
 // Body
 $base-text-color: $black !default;
-$base-background-color: white !default;
+$base-background-color: $white !default;
 $base-font-size: 16px !default;
 $base-line-height: 1.2 !default;
 $base-font-family: $base-font-sans-serif !default;
@@ -23,7 +22,7 @@ $vertical-rhythm: ($base-line-height * 1em);
 $base-min-width: 320px;
 
 // Liks
-
+$base-link-color: $light-blue;
 
 // Buttons 
 $btn-color: $white !default;
