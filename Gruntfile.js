@@ -45,14 +45,29 @@ var PathConfig = require('./grunt-settings.js');
     // },
 
     postcss: {
-      options: {
-        map: true,
-        processors: [
-          require('autoprefixer-core')({browsers: ['last 4 version', 'Android 4']})
-        ]
+      dev: {
+        options: {
+          map: true,
+          processors: [
+            require('autoprefixer-core')({browsers: ['last 4 version', 'Android 4']})
+          ]
+        },
+        src: ['<%= config.cssDir %>*.css',
+              '<%= config.cssMainFileDir %><%= config.cssMainFileName %>.css',
+              '!<%= config.cssDir %>bootstrap.css',
+              '!<%= config.cssDir %>bootstrap.min.css',
+              '!<%= config.cssDir %>ie.css',
+              '!<%= config.cssDir %>ie8.css'
+              ]
       },
       dist: {
-        src: ['<%= config.cssDir %>*.css', 
+        options: {
+          map: false,
+          processors: [
+            require('autoprefixer-core')({browsers: ['last 4 version', 'Android 4']})
+          ]
+        },
+        src: ['<%= config.cssDir %>*.css',
               '<%= config.cssMainFileDir %><%= config.cssMainFileName %>.css',
               '!<%= config.cssDir %>bootstrap.css',
               '!<%= config.cssDir %>bootstrap.min.css',
@@ -137,7 +152,7 @@ var PathConfig = require('./grunt-settings.js');
       },
       css: {
         files: ['<%= config.sassDir %>**/*.scss'],
-        tasks: ['sass:dev', 'postcss:dist'],
+        tasks: ['sass:dev', 'postcss:dev'],
         options: {
             spawn: false,
         }
