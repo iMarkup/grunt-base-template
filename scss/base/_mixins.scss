@@ -247,4 +247,13 @@ $animation-speed: .3s !default;
   &.placeholder {@content}
 }
 
+/// Font-size px to rem calc
+/// @example scss - Usage
+/// selector {
+///    @include rem-font-size(16px);
+/// }
 
+@mixin rem-font-size($pxSize) {
+  font-size: $pxSize;
+  font-size: ($pxSize / 10px) + rem;
+}
