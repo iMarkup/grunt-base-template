@@ -27,10 +27,14 @@
 // justify nav
 %justify {
  text-align: justify;
+ font-size: 1px;
+ line-height: 0px;
  > * {
   display: inline-block;
   vertical-align: top;
   text-align: left;
+  font-size: $base-font-size;
+  line-height: $base-line-height;
  }
  &:after {
   content: '';
