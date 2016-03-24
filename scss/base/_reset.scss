@@ -24,11 +24,3 @@ img {
 
 // google map fix
 .gm-style img {max-width: none}
-
-// hide tel links on desktop
-@media only screen and (min-width:1025px) {
-    a[href^=tel],a[href^=skype], a[href^=sms] {
-    cursor:default;
-    pointer-events:none;
-  }
-}
