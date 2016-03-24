@@ -218,7 +218,7 @@ $animation-speed: .3s !default;
 @mixin animate($properties, $duration: $animation-speed, $easing: ease-in-out) {
   $list:();
   @each $prop in $properties {
-    $str: #{$prop} #{$animation-speed} #{$easing};
+    $str: #{$prop} #{$duration} #{$easing};
     $list: join($list, $str, comma);
   }
   transition: $list;
