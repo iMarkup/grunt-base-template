@@ -13,11 +13,11 @@ $base-font-serif: 'Times New Roman', 'Times', 'Baskerville', 'Georgia', serif;
 // Body
 $base-text-color: $black !default;
 $base-background-color: $white !default;
-$base-font-size: 16px !default;
-$base-line-height: 1.2 !default;
+$font-size-base: 16px !default;
+$line-height-base: 1.2 !default;
 $base-font-family: $base-font-sans-serif !default;
 
-$vertical-rhythm: ($base-line-height * 1em);
+$vertical-rhythm: ($line-height-base * 1em);
 
 $base-min-width: 320px;
 

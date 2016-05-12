@@ -10,7 +10,7 @@ html {
 body {
   color: $base-text-color;
   background: $base-background-color;
-  font: #{$base-font-size}/#{$base-line-height} $base-font-family;
+  font: #{$font-size-base}/#{$line-height-base} $base-font-family;
   min-width: $base-min-width;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
