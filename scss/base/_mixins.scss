@@ -219,7 +219,7 @@ $animation-speed: .3s !default;
   $list:();
   @each $prop in $properties {
     $str: #{$prop} #{$duration} #{$easing};
-    $list: join($list, $str, comma);
+    $list: join($list, #{$str}, comma);
   }
   transition: $list;
 }
