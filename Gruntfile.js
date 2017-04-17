@@ -318,7 +318,9 @@ var PathConfig = require('./grunt-settings.js');
       dist: {
         expand: true,
         files: {
-          '<%= config.cssMainFileDir %><%= config.cssMainFileName %>.css' : '<%= config.cssMainFileDir %><%= config.cssMainFileName %>.css'
+          '<%= config.cssMainFileDir %><%= config.cssMainFileName %>.css' : '<%= config.cssMainFileDir %><%= config.cssMainFileName %>.css',
+          '<%= config.cssMainFileDir %>bootstrap.css' : '<%= config.cssMainFileDir %>bootstrap.css',
+          '<%= config.cssMainFileDir %>bootstrap-extended.css' : '<%= config.cssMainFileDir %>bootstrap-extended.css'
         },
       }
     },
