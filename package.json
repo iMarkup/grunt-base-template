@@ -1,6 +1,5 @@
 {
   "name": "grunt-with-node-sass",
-  "version": "0.9.8",
   "devDependencies": {
     "autoprefixer-core": "^5.2.1",
     "grunt": "^0.4.5",
